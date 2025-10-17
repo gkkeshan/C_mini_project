@@ -2,10 +2,9 @@
 #include <stdlib.h>
 
 int main(){
-				printf("Exiting... \nDone\n");     //Exit in the program
     //Variable declaration
     int choice,offid, authoid=1234,g=0;
-    while (g<1) { //for repeating after entered invalid Officer ID
+    while (g<1) { //for repeating after entered invaild Officer ID
         printf("\t==== Election System ===\n\n");
         
         printf("Enter Officer ID: ");  //Enter Officer ID to start the system
