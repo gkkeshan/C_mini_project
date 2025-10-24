@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+
+int voterAge,idLenght,i,valid = 1,idLoop = 0;
 
 int main() {
-    char voterID[13];
+    char voterId[13];
     char voterName[50];
     char voterDistrict[10];
     char voterAddress[100];
@@ -12,13 +16,55 @@ int main() {
 
     // Get voter ID
     printf("Enter Voter ID (12 characters): ");
-    scanf("%s", voterID);
+    scanf("%s", voterId);
 
-    // Check voter ID length
-    if (strlen(voterID) != 12) {
-        printf("Error: Voter ID must be 12 characters long.\n");
-        return 0;
+    // Loop for Get voter ID
+    while (idLoop<1) {
+        valid = 1;
+        printf("=== Voter Registration System ===\n");
+        
+        // Get voter ID
+        printf("Enter Voter ID (12 characters): ");
+        scanf("%s", voterId);
+
+        // Check voter ID length
+        idLenght = strlen(voterId);
+        // Check for old NIC format (9 digits + 1 letter)
+        if (idLenght == 10) {
+            for (i=0; i<9; i++) {
+                if (!isdigit(voterId[i])) {
+                    valid = 0;
+                    break;
+                }
+                // Last character should be V or X (uppercase or lowercase)
+                else if (!(voterId[9] == 'V' || voterId[9] == 'v' || voterId[9] == 'X' || voterId[9] == 'x')){
+                    valid = 0;
+                }
+            }
+        }
+        // Check for new NIC format (12 digits)
+        else if (idLenght == 12) {
+            for (i=0; i<12; i++) {
+                if (!isdigit(voterId[i])) {
+                    valid = 0;
+                    break;
+                }
+            }
+        }
+        else{
+            valid = 0;
+        }
+        
+        if (valid == 1) {
+            //vaild
+            idLoop++;
+        }
+        else{
+            system("clear || cls");
+            printf("Invalid NIC number.\n");
+        }
     }
+
 
     // Get name
     printf("Enter Name: ");
@@ -56,3 +102,4 @@ int main() {
     printf("\nVoter Registered Successfully!\n");
 
     return 0;
+}
