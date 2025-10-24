@@ -3,8 +3,10 @@
 #include <ctype.h>
 #include <stdlib.h>
 
+int voterAge,idLenght,i,valid = 1,idLoop = 0;
+
 int main() {
-    char voterID[13];
+    char voterId[13];
     char voterName[50];
     char voterDistrict[10];
     char voterAddress[100];
@@ -14,9 +16,18 @@ int main() {
 
     // Get voter ID
     printf("Enter Voter ID (12 characters): ");
-    scanf("%s", voterID);
+    scanf("%s", voterId);
 
-    // Check voter ID length
+    // Loop for Get voter ID
+    while (idLoop<1) {
+        valid = 1;
+        printf("=== Voter Registration System ===\n");
+        
+        // Get voter ID
+        printf("Enter Voter ID (12 characters): ");
+        scanf("%s", voterId);
+
+        // Check voter ID length
         idLenght = strlen(voterId);
         // Check for old NIC format (9 digits + 1 letter)
         if (idLenght == 10) {
@@ -91,3 +102,4 @@ int main() {
     printf("\nVoter Registered Successfully!\n");
 
     return 0;
+}
