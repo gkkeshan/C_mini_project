@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
 
 int main() {
     char voterID[13];
@@ -15,10 +17,43 @@ int main() {
     scanf("%s", voterID);
 
     // Check voter ID length
-    if (strlen(voterID) != 12) {
-        printf("Error: Voter ID must be 12 characters long.\n");
-        return 0;
+        idLenght = strlen(voterId);
+        // Check for old NIC format (9 digits + 1 letter)
+        if (idLenght == 10) {
+            for (i=0; i<9; i++) {
+                if (!isdigit(voterId[i])) {
+                    valid = 0;
+                    break;
+                }
+                // Last character should be V or X (uppercase or lowercase)
+                else if (!(voterId[9] == 'V' || voterId[9] == 'v' || voterId[9] == 'X' || voterId[9] == 'x')){
+                    valid = 0;
+                }
+            }
+        }
+        // Check for new NIC format (12 digits)
+        else if (idLenght == 12) {
+            for (i=0; i<12; i++) {
+                if (!isdigit(voterId[i])) {
+                    valid = 0;
+                    break;
+                }
+            }
+        }
+        else{
+            valid = 0;
+        }
+        
+        if (valid == 1) {
+            //vaild
+            idLoop++;
+        }
+        else{
+            system("clear || cls");
+            printf("Invalid NIC number.\n");
+        }
     }
+
 
     // Get name
     printf("Enter Name: ");
