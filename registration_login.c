@@ -10,7 +10,7 @@ int main()
         g=0;
         printf("1. Register [Save data]\n");
         printf("2. Login [Verify eligibility]\n");
-         printf("3. Show result\n");
+        printf("3. Show result\n");
         printf("0. Exit \n");
         printf("Enter your Option: ");
         scanf("%d", &Option);
@@ -25,9 +25,13 @@ int main()
         }
     else if (Option==3)
         {
+            printf("show result\n");
+        }
+    else if (Option==0)
+        {
         g++;
         }
-
+    
     else
         {
             printf("Invalid Option!\n");
