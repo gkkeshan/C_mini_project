@@ -14,7 +14,7 @@ struct voter{
 };
 struct voter v[100];
 int k = 0;
-void vinuthi() {
+void voterRegistration() {
     
     char voterId[20];
     char voterName[50];
