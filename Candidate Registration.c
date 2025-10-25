@@ -155,5 +155,3 @@ void deatils(char *partyName){
     
     
 }
-
-Z
