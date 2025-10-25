@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -5,7 +6,7 @@
 
 int voterAge,idLenght,i,valid = 1,idLoop = 0;
 
-int main() {
+void voterRegistration() {
     char voterId[13];
     char voterName[50];
     char voterDistrict[10];
@@ -70,12 +71,12 @@ int main() {
     printf("Enter Name: ");
     getchar();
     fgets(voterName, sizeof(voterName), stdin);
-    voterName[strcspn(voterName, "\n")] = '\0'; 
+    voterName[strcspn(voterName, "\n")] = '\0';
 
     // Get district
     printf("Are you from Kaluthara district (yes / no): ");
     fgets(voterDistrict, sizeof(voterDistrict), stdin);
-    voterDistrict[strcspn(voterDistrict, "\n")] = '\0'; 
+    voterDistrict[strcspn(voterDistrict, "\n")] = '\0';
 
     // check if the answer is "yes" or "YES"
     if (strcmp(voterDistrict, "yes") != 0 && strcmp(voterDistrict, "YES") != 0) {
@@ -86,7 +87,7 @@ int main() {
     // Get address
     printf("Enter Address: ");
     fgets(voterAddress, sizeof(voterAddress), stdin);
-    voterAddress[strcspn(voterAddress, "\n")] = '\0'; 
+    voterAddress[strcspn(voterAddress, "\n")] = '\0';
 
     // Get age
     printf("Enter Age: ");
@@ -101,5 +102,4 @@ int main() {
     // If all conditions are valid
     printf("\nVoter Registered Successfully!\n");
 
-    return 0;
 }

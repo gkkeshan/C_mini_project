@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "linker.h"
+void voterRegistration();
+void candidateRegistration();
 
 int main(){
     //Variable declaration

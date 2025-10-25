@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include<string.h>
-int main() 
+void candidateRegistration()
 {
     char name[50];
     int userID,g=0;
@@ -54,7 +54,6 @@ int main()
     
     default:
         printf("Invalid party selection!\n");
-        main();
         break;
     }
     }
