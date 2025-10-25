@@ -80,7 +80,7 @@ int main() {
     // check if the answer is "yes" or "YES"
     if (strcmp(voterDistrict, "yes") != 0 && strcmp(voterDistrict, "YES") != 0) {
         printf("Error: Only voters from Kaluthara district can register.\n");
-        return 0;
+    
     }
 
     // Get address
@@ -95,7 +95,7 @@ int main() {
     // Check age
     if (voterAge < 18) {
         printf("Error: Voter must be 18 or older to register.\n");
-        return 0;
+        
     }
 
     // If all conditions are valid
