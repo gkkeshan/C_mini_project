@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "linker.h"
+#include "globals.h"
+
 
 struct voter{
     char voterId[20];
@@ -14,7 +16,7 @@ struct voter{
 };
 struct voter v[100];
 int k = 0;
-void voterRegistration() {
+void vinuthi() {
     
     char voterId[20];
     char voterName[50];
@@ -89,7 +91,9 @@ void voterRegistration() {
 
     // check if the answer is "yes" or "YES"
     if (strcmp(voterDistrict, "yes") != 0 && strcmp(voterDistrict, "YES") != 0) {
+        system("clear || cls"); // clear the screen after entered ID
         printf("Error: Only voters from Colombo district can register.\n");
+        return;
     }
 
     // Get address

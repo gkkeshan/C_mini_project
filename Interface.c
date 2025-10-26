@@ -1,9 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "linker.h"
-void voterRegistration();
-void candidateRegistration();
+#include "globals.h"
+
+void pasindu();
+void vinuthi();
 void castVote();
+void showResults();
+
 int main(){
     //file headers
     /*FILE *candidate;
@@ -26,7 +30,7 @@ int main(){
     
     
     //Variable declaration
-    int choice,offid, authoid=1234;
+    int choice,offid,secondOfficer,authoid=1234, headId=12345;
     int Option;
     int officerLoop = 0,mainLoop;
     
@@ -48,6 +52,7 @@ int main(){
             while(mainLoop){
                 printf("1. Register [Save data]\n");
                 printf("2. Login [Verify eligibility]\n");
+                printf("3. Show Results\n");
                 printf("0. Exit \n");
                 printf("Enter your Option: ");
                 scanf("%d", &Option);
@@ -103,6 +108,15 @@ int main(){
                     case 2:
                         castVote();
                         break;
+                    case 3:
+                        printf("Enter Officer ID: ");  //Enter Officer ID to start the system
+                        scanf("%d", &secondOfficer);
+                        
+                        if(secondOfficer==headId){
+
+                            showResults();
+                        }
+                        break;
                     case 0:
                         printf("Exiting....\nDone\n");
                         mainLoop=0;
@@ -133,7 +147,43 @@ int main(){
 
  return 0;
 }
+void showResults() {
+    system("clear || cls"); // clear the screen after entered ID
 
+    printf("\nElection Results:\n");
+    printf("===================================\n");
+    printf("%-20s %-15s %-5s\n", "Candidate Name", "Party", "Votes");
 
+    int maxVotes = sC[0].voteCount; // start with first candidate's votes
+    int winnerIndex = 0;
+
+    // Print all candidates and find the one with max votes
+    for (int i = 0; i < candidateCount; i++) {
+        printf("%-20s %-15s %-5d\n",
+               sC[i].savedCName, sC[i].savedParty, sC[i].voteCount);
+
+        if (sC[i].voteCount > maxVotes) {
+            maxVotes = sC[i].voteCount;
+            winnerIndex = i;
+        }
+    }
+
+    printf("===================================\n");
+    
+    FILE *file = fopen("Candidate.txt", "w");
+    for (int i = 0; i < candidateCount; i++) {
+        fprintf(file, "%s %s %d\n", sC[i].savedCName, sC[i].savedParty, sC[i].voteCount);
+    }
+    fclose(file);
+
+    // Check if no votes at all
+    if (maxVotes == 0) {
+        printf("No votes have been cast yet!\n");
+    } else {
+        printf("Winner Party: %s\n", sC[winnerIndex].savedParty);
+        printf("Winner Candidate: %s \n",
+               sC[winnerIndex].savedCName);
+    }
+}
 
 
