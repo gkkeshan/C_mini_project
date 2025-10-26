@@ -4,6 +4,8 @@
 #include <string.h>
 #include <time.h>
 #include "linker.h"
+#include "globals.h"
+
 struct candidate{
     char name[50],candidateId[20],party[20];
     int number;
@@ -36,28 +38,28 @@ void pasindu(){
         switch (party){
             case 'B':
             case 'b':
-                strcpy(x, "Blue Party");
+                strcpy(x, "Blue_Party");
                 deatils(x);
                 partyLoop++;
                 break;
                 
             case 'G':
             case 'g':
-                strcpy(x, "Green Party");
+                strcpy(x, "Green_Party");
                 deatils(x);
                 partyLoop++;
                 break;
                 
             case 'R':
             case 'r':
-                strcpy(x, "Red Party");
+                strcpy(x, "Red_Party");
                 deatils(x);
                 partyLoop++;
                 break;
                 
             case 'Y':
             case 'y':
-                strcpy(x, "Yellow Party");
+                strcpy(x, "Yellow_Party");
                 deatils(x);
                 partyLoop++;
                 break;
@@ -65,7 +67,7 @@ void pasindu(){
                 
             case 'P':
             case 'p':
-                strcpy(x, "Green Party");
+                strcpy(x, "Green_Party");
                 deatils(x);
                 partyLoop++;
                 break;
