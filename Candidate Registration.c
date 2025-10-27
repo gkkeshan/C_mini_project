@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "linker.h"
-#include "globals.h"
+//#include "linker.h"
+//#include "globals.h"
 
 struct candidate{
     char name[50],candidateId[20],party[20];
