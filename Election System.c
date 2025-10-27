@@ -461,7 +461,7 @@ if (voterFile != NULL) {
     // Get age
     printf("Enter Age: ");
     scanf("%d", &voterAge);
-	printf("%d", voterAge);
+	
 	
     //Check age
     if (voterAge >= 18) {
@@ -727,22 +727,32 @@ void targetCandidateList(char *targetParty, char *voterId){
 
 
 void showResults() {
-    FILE *fv = fopen("votes.txt", "r");
-    if (fv == NULL) {
-        printf("No votes have been cast yet or file not found.\n");
-        return;
-    }
+	
+	int offid,authoid=1234;
+	
+	system("clear || cls");
+	printf("\t==== Election System ===\n\n");
+	printf("Enter Officer ID: ");  //Enter officer ID to view results
+	scanf("%d", &offid);
+	
+	if(offid==authoid){
+		
+		FILE *fv = fopen("votes.txt", "r");
+		if (fv == NULL) {
+			printf("No votes have been cast yet or file not found.\n");
+			return;
+		}
 
-    char voterId[50], partyWord1[50], partyWord2[50], party[100], candidateName[100];
-    int candidateNumber;
-    int voteCount[100] = {0};
-    char candidateList[100][100];
-    char partyList[100][100];
-    int candidateNumList[100];
-    int totalCandidates = 0;
+		char voterId[50], partyWord1[50], partyWord2[50], party[100], candidateName[100];
+		int candidateNumber;
+		int voteCount[100] = {0};
+		char candidateList[100][100];
+		char partyList[100][100];
+		int candidateNumList[100];
+		int totalCandidates = 0;
 
-    // Read votes with two-word party names
-    while (fscanf(fv, "%49s %49s %49s %99s %d", voterId, partyWord1, partyWord2, candidateName, &candidateNumber) == 5) {
+		// Read votes with two-word party names
+		while (fscanf(fv, "%49s %49s %49s %99s %d", voterId, partyWord1, partyWord2, candidateName, &candidateNumber) == 5) {
         snprintf(party, sizeof(party), "%s %s", partyWord1, partyWord2);
 
         int found = 0;
@@ -796,4 +806,12 @@ void showResults() {
 }
 
 
+else {
+	
+	system("clear || cls");
+	printf("Invalid Officer ID!\n\n");
+	
+	
+}
 
+}
