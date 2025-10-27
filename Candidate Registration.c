@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-//#include "linker.h"
-//#include "globals.h"
+#include "linker.h"
+#include "globals.h"
 
 struct candidate{
     char name[50],candidateId[20],party[20];
@@ -102,8 +102,8 @@ void deatils(char *partyName){
                     valid = 0;
                     break;
                 }
-                // Last character should be V or X (uppercase or lowercase)
-                else if (!(candidateId[9] == 'V' || candidateId[9] == 'v' || candidateId[9] == 'X' || candidateId[9] == 'x')){
+                // Last character should be V (uppercase or lowercase)
+                else if (!(candidateId[9] == 'V' || candidateId[9] == 'v')){
                     valid = 0;
                 }
             }
